@@ -31,9 +31,23 @@ Aito Predict
     ${response}    Predict      ${client}   ${query}
     
     # Return only first feature and probability
-    [Return]    ${response['hits'][0]['feature']}
+    [Return]    ${response['hits'][0]}
 
 
+*** Keywords ***
+Prefill the field
+    [Arguments]    ${field_id}    ${field_name}    ${prediction}
+    # field_id: Fields id in the form
+    # field_name: Fields name in dialogue
+    # prediction: Prediction object containing feature and $p
+
+    ${confidence}     Builtin.Evaluate        ${prediction['$p']} * 100
+    ${confidence}     Convert to Integer        ${confidence}
+
+    Run Keyword If  ${prediction['$p']} >= 0.1   input text  ${field_id}   ${prediction['feature']}
+    Run Keyword If  ${prediction['$p']} >= 0.1 and ${prediction['$p']} < 0.98      Pause Execution   message="Review ${field_name}! Confidence is only ${confidence}%"
+
+    [Return]
 
 *** Test Cases ***
 Fill the form
@@ -47,13 +61,14 @@ Fill the form
     ${inputs}=       Create Dictionary   Item_Description=${ITEM_DESCRIPTION}
 
     ${product_type}    Aito Predict   table=${table}    inputs=${inputs}   target=Product_Category 
-    
-    input text  Field2  ${PRODUCT_TYPE}
 
-    ${gl_code}    Aito Predict   table=${table}    inputs=${inputs}   target=GL_Code 
+    Prefill the field   Field2    product type   ${product_type}
     
-    input text  Field3  ${gl_code}
+    ${gl_code}    Aito Predict   table=${table}    inputs=${inputs}   target=GL_Code 
+
+    Prefill the field   Field3    GL code   ${gl_code}
 
     ${vendor_code}    Aito Predict   table=${table}    inputs=${inputs}   target=Vendor_Code
-    
-    input text  Field4  ${VENDOR_CODE}
+
+    Prefill the field   Field4    vendor code   ${vendor_code}
+
