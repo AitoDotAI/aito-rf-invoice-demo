@@ -54,7 +54,7 @@ Fill the form
     Open Browser    ${FORM URL}    ${BROWSER}
     Maximize Browser Window
     Set Selenium Speed    ${DELAY}
-    Pause Execution   message="Fill input description"
+    Pause Execution   message=Fill the item description with e.g. 'Real estate rent. Deltona corp' and click OK. Robot will fill the rest as it is able.
     
     ${ITEM_DESCRIPTION}      Get Value        Field1
     
