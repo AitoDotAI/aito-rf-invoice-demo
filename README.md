@@ -1,11 +1,11 @@
-* Description
+# Aito Robot Framework invoice demo
 
 aito-rf-invoice-demo is a simple attended bot, which opens an invoice form in a browser, requests user to input item description, and the fills the remaining fields based on Aito predictions.
 
 The bot uses a public invoice data set from the public 'public-1' Aito instance.
 
 
-* How to setup?
+## How to setup?
 
 Run the following commands to install the dependencies.
 
@@ -17,7 +17,7 @@ pip3 install webdrivermanager
 webdrivermanager firefox chrome --linkpath /usr/local/bin
 ```
 
-* How to run?
+## How to run?
 
 Then start the robot with:
 
