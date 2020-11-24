@@ -28,11 +28,17 @@ AITO_INSTANCE_URL=https://public-1.api.aito.ai AITO_API_KEY=bvss2i2dIkaWUfBCdzEO
 The robot will open a browser with an invoice form in it, and open
 a dialog with 'OK' button and a message about 'filling the item description'.
 
-Next:
+![Empty invoice form](resources/invoice-form-1.png?raw=true "Empty invoice form")
 
-1. Input the item description with e.g. 'Deal estate rent. Deltona Corp'
+Next input the item description with e.g. 'real estate rent deltona corp'
 
-2. Click the 'OK' button.
+![Item description filled](resources/invoice-form-2.png?raw=true "Invoice form with the item description filled")
 
-3. Robot will fill the invoice form with GL_Code, Product_Category and Vendor_Code predictions. 
+Then click the 'OK' button and the robot will fill the invoice form with GL_Code, Product_Category and Vendor_Code predictions. Robot will warn about the low confidence predictions.
+
+![Missing fields filled](resources/invoice-form-3.png?raw=true "Invoice form with the predictions filled")
+
+
+
+
 
