@@ -2,6 +2,8 @@
 
 aito-rf-invoice-demo is a simple attended bot, which opens an invoice form in a browser, requests user to input item description, and the fills the remaining fields based on Aito predictions.
 
+![Item description filled](resources/invoice-form.gif?raw=true "Robot framework bot fill missing fields, once you input the 'Item Description' field")
+
 The bot uses a public invoice data set from the public 'public-1' Aito instance.
 
 
@@ -37,8 +39,4 @@ Next input the item description with e.g. 'real estate rent deltona corp'
 Then click the 'OK' button and the robot will fill the invoice form with GL_Code, Product_Category and Vendor_Code predictions. Robot will warn about the low confidence predictions.
 
 ![Missing fields filled](resources/invoice-form-3.png?raw=true "Invoice form with the predictions filled")
-
-
-
-
 
