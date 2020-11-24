@@ -4,8 +4,34 @@ aito-rf-invoice-demo is a simple attended bot, which opens an invoice form in a 
 
 ![Item description filled](resources/invoice-form.gif?raw=true "Robot framework bot fill missing fields, once you input the 'Item Description' field")
 
-The bot uses a public invoice data set from the public 'public-1' Aito instance.
+## How does it work?
 
+aito-rf-invoice-demo bot uses a public invoice data set from the public 'public-1' [Aito](https://aito.ai) database instance. The database instance provides the capacity to predict any field from any table based on any arbitrary 'known information'.
+
+In practice the robot uses the following kinds of predictive queries to predict the missing fields:
+
+```json
+{
+  "from": "invoice_data",
+  "where": {
+    "Item_Description": "real estate rents deltona corp"
+  },
+  "predict": "Product_Category",
+  "limit" : 1
+}
+```
+
+The predictions can be done in the Robot Framework with the following kind of code:
+
+```
+    # Construct predict query body as a Dictionary using arguments
+    ${query}=       Create Dictionary   from=${table}   where=${inputs}   predict=${target}   limit=${limit}
+
+    # Query for Aito
+    ${response}    Predict      ${client}   ${query}
+```
+
+The source code is available [here](aito-invoice-demo.robot)
 
 ## How to setup?
 
