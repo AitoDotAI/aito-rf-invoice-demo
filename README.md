@@ -1,3 +1,5 @@
+**NOTE: This example repository is not actively maintained. For later examples navigate to [Aito Docs](https://aito.ai/docs/).**
+
 # Aito Robot Framework invoice demo
 
 aito-rf-invoice-demo is a simple attended bot, which opens an invoice form in a browser, requests user to input item description, and the fills the remaining fields based on Aito predictions.
